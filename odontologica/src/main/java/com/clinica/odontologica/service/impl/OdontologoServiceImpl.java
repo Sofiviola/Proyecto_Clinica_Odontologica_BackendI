@@ -14,9 +14,12 @@ import org.springframework.stereotype.Service;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
+import org.apache.log4j.Logger;
 
 @Service
 public class OdontologoServiceImpl implements IOdontologoService {
+   //
+    final static Logger log = Logger.getLogger(String.valueOf(OdontologoServiceImpl.class));
 
     //
     @Autowired
@@ -32,6 +35,7 @@ public class OdontologoServiceImpl implements IOdontologoService {
     //Implementacion metodos interface
     @Override
     public void agregarOdontologo(OdontologoDTO odontologoDTO) {
+        log.debug("Registrando un nuevo odontologo: " + odontologoDTO.toString());
         guardarOdontologo(odontologoDTO);
     }
 

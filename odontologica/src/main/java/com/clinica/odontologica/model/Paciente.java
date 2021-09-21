@@ -4,10 +4,7 @@ package com.clinica.odontologica.model;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -16,7 +13,8 @@ import java.util.Date;
 public class Paciente {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue (strategy = GenerationType.SEQUENCE)
+    @Column(name = "id", nullable = false)
     private Long id;
     private String nombre;
     private String apellido;

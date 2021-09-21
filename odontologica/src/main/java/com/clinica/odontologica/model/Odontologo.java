@@ -3,10 +3,7 @@ package com.clinica.odontologica.model;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table
@@ -20,9 +17,6 @@ public class Odontologo {
     private String nombre;
     private String apellido;
     private Integer matricula;
-
-    //La dependecia lombok trae los get, set
-// hace autoincremental el id y crea el constructor vacio
 
 
     @Override
