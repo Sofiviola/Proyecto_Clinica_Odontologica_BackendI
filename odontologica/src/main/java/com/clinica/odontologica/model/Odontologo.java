@@ -1,16 +1,19 @@
 package com.clinica.odontologica.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
-@Table
+@Table(name ="Odontologos")
 @Getter
 @Setter
-public class Odontologo {
 
+public class Odontologo {
+//Atributos
     @Id
     @GeneratedValue
     private Long id;
@@ -18,14 +21,10 @@ public class Odontologo {
     private String apellido;
     private Integer matricula;
 
+    //Vinculacion tabla turnos
+    @OneToMany(mappedBy = "odontologo")
+    @JsonIgnore
+    private Set<Turno> turnos;
 
-    @Override
-    public String toString() {
-        return "Odontologo{" +
-                "id=" + id +
-                ", nombre='" + nombre + '\'' +
-                ", apellido='" + apellido + '\'' +
-                ", matricula=" + matricula +
-                '}';
-    }
+
 }

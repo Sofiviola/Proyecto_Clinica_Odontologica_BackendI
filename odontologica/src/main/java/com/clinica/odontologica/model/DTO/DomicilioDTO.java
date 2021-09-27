@@ -4,15 +4,14 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import java.util.Date;
-
 @Getter
 @Setter
 @ToString
-public class PacienteDTO {
+public class DomicilioDTO {
     private Long id;
-    private String nombre;
-    private String apellido;
-    private String dni;
-    private Date fechaIngreso;
+    private String calle;
+    private String numero;
+    private String localidad;
+    private String provincia;
+
 }

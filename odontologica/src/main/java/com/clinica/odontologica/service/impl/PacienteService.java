@@ -1,47 +1,44 @@
 package com.clinica.odontologica.service.impl;
 
+
 import com.clinica.odontologica.model.DTO.PacienteDTO;
 import com.clinica.odontologica.model.Paciente;
 import com.clinica.odontologica.repository.IPacienteRepository;
 import com.clinica.odontologica.service.IPacienteService;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.modelmapper.ModelMapper;
-import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
-public class PacienteServiceImpl implements IPacienteService {
-    //
+public class PacienteService implements IPacienteService {
+
+    //Inyeccion dependecias
     @Autowired
     IPacienteRepository iPacienteRepository;
 
     @Autowired
     ObjectMapper mapper;
 
-    @Autowired
-    ModelMapper modelMapper;
 
     //Implementacion metodos interface
     @Override
     public void agregarPaciente(PacienteDTO pacienteDTO) {
-        guardarPaciente(pacienteDTO);
+        Paciente paciente = mapper.convertValue(pacienteDTO, Paciente.class);
+        iPacienteRepository.save(paciente);
     }
 
     @Override
     public PacienteDTO consultarPaciente(Long id) {
-        Optional<Paciente> encontrar = iPacienteRepository.findById(id);
-        return mapper.convertValue(encontrar, PacienteDTO.class);
+        Optional<Paciente> paciente = iPacienteRepository.findById(id);
+        return mapper.convertValue(paciente, PacienteDTO.class);
     }
 
     @Override
     public void modificarPaciente(PacienteDTO pacienteDTO) {
-        guardarPaciente(pacienteDTO);
+        Paciente paciente = mapper.convertValue(pacienteDTO, Paciente.class);
+        iPacienteRepository.save(paciente);
     }
 
     @Override
@@ -51,14 +48,16 @@ public class PacienteServiceImpl implements IPacienteService {
 
     @Override
     public Collection<PacienteDTO> getAll() {
-        Collection <Paciente> allPacientes = iPacienteRepository.findAll(Sort.by(Sort.Direction.ASC, "apellido"));
-        return modelMapper.map(allPacientes, new TypeToken<List<PacienteDTO>>() {}.getType());
+        List<Paciente> pacientes = iPacienteRepository.findAll();
+        Set<PacienteDTO> pacientesDTO = new HashSet<>();
+        for (Paciente paciente: pacientes) {
+            pacientesDTO.add( mapper.convertValue(paciente,PacienteDTO.class));
+        }
+        return pacientesDTO;
     }
 
-    //Metodo creado para agregar y modificar odontologo
-    private void guardarPaciente(PacienteDTO pacienteDTO){
-        Paciente newPaciente = mapper.convertValue(pacienteDTO, Paciente.class);
-        iPacienteRepository.save(newPaciente);
-    }
+
+
+
 
 }

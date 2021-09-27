@@ -4,6 +4,7 @@ package com.clinica.odontologica.controller;
 import com.clinica.odontologica.model.DTO.OdontologoDTO;
 import com.clinica.odontologica.service.IOdontologoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,40 +14,39 @@ import java.util.Collection;
 @RequestMapping("/odontologos")
 public class OdontologoController {
 
-    //Para que se inyecte la dependecia
+    //Inyeccion dependecia
     @Autowired
     IOdontologoService iOdontologoService;
 
-    //Constructor
     public OdontologoController(IOdontologoService iOdontologoService) {
         this.iOdontologoService = iOdontologoService;
     }
 
     //Para agregar un odontologo
     @PostMapping()
-    public ResponseEntity<OdontologoDTO> agregarOdontologo(@RequestBody OdontologoDTO odontologoDTO){
+    public ResponseEntity<?> agregarOdontologo(@RequestBody OdontologoDTO odontologoDTO){
         iOdontologoService.agregarOdontologo(odontologoDTO);
-        return  ResponseEntity.ok(null);
+        return  ResponseEntity.status(HttpStatus.OK).body("Se agrego el odontologo");
     }
 
     //Para buscar un odontologo
     @GetMapping("/{id}")
-    public OdontologoDTO getOdontologo(@PathVariable Long id){
+    public OdontologoDTO consultarOdontologo(@PathVariable long id){
         return iOdontologoService.consultarOdontologo(id);
     }
 
     //Para modificar un odontologo
     @PutMapping()
-    public ResponseEntity<OdontologoDTO> modificarOdontologo(@RequestBody OdontologoDTO odontologoDTO){
+    public ResponseEntity<?> modificarOdontologo(@RequestBody OdontologoDTO odontologoDTO){
         iOdontologoService.modificarOdontologo(odontologoDTO);
-        return  ResponseEntity.ok(null);
+        return  ResponseEntity.status(HttpStatus.OK).body("Se modifico el odontologo");
     }
 
     //Para borrar un odontologo
     @DeleteMapping("/{id}")
-    public ResponseEntity<OdontologoDTO> borrarOdontologo(@PathVariable Long id){
+    public ResponseEntity<?> borrarOdontologo(@PathVariable long id){
         iOdontologoService.borrarOdontologo(id);
-        return ResponseEntity.ok(null);
+        return ResponseEntity.status(HttpStatus.OK).body("Se elimino el odontologo");
     }
 
     //Listar los odontologos

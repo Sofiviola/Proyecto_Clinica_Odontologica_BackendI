@@ -4,50 +4,47 @@ package com.clinica.odontologica.controller;
 import com.clinica.odontologica.model.DTO.PacienteDTO;
 import com.clinica.odontologica.service.IPacienteService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 
 @RestController
 @RequestMapping("/pacientes")
-
 public class PacienteController {
 
-    //Para que se inyecte la dependecia
+
+    //Inyeccion dependecia
     @Autowired
     IPacienteService iPacienteService;
 
-    //Constructor
-    public PacienteController(IPacienteService iPacienteService) {
-        this.iPacienteService = iPacienteService;
-    }
+
     //Para agregar un paciente
     @PostMapping()
-    public ResponseEntity<PacienteDTO> agregarPaciente(@RequestBody PacienteDTO pacienteDTO){
+    public ResponseEntity<?> agregarPaciente(@RequestBody PacienteDTO pacienteDTO){
         iPacienteService.agregarPaciente(pacienteDTO);
-        return  ResponseEntity.ok(null);
+        return  ResponseEntity.status(HttpStatus.OK).body("Se agrego el paciente");
     }
 
     //Para buscar un paciente
     @GetMapping("/{id}")
-    public PacienteDTO getPaciente(@PathVariable Long id){
+    public PacienteDTO consultarPaciente(@PathVariable Long id){
         return iPacienteService.consultarPaciente(id);
     }
 
     //Para modificar un paciente
     @PutMapping()
-    public ResponseEntity<PacienteDTO> modificarPaciente(@RequestBody PacienteDTO pacienteDTO){
+    public ResponseEntity<?> modificarPaciente(@RequestBody PacienteDTO pacienteDTO){
         iPacienteService.modificarPaciente(pacienteDTO);
-        return  ResponseEntity.ok(null);
+        return  ResponseEntity.status(HttpStatus.OK).body("Se modifico el paciente");
     }
 
     //Para borrar un paciente
     @DeleteMapping("/{id}")
-    public ResponseEntity<PacienteDTO> borrarPaciente(@PathVariable Long id){
+    public ResponseEntity<?> borrarPaciente(@PathVariable Long id){
         iPacienteService.borrarPaciente(id);
-        return ResponseEntity.ok(null);
+        return ResponseEntity.status(HttpStatus.OK).body("Se elimino el paciente");
     }
 
     //Listar los pacientes
@@ -55,6 +52,5 @@ public class PacienteController {
     public Collection<PacienteDTO> listarPacientes(){
         return iPacienteService.getAll();
     }
-
 
 }

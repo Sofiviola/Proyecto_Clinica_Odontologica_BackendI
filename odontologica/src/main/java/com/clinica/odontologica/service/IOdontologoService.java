@@ -1,12 +1,9 @@
 package com.clinica.odontologica.service;
 
 import com.clinica.odontologica.model.DTO.OdontologoDTO;
-import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 
-
-@Service
 public interface IOdontologoService {
 
     //CRUD odontologo
@@ -19,6 +16,5 @@ public interface IOdontologoService {
     void borrarOdontologo(Long id);
 
     Collection<OdontologoDTO> getAll();
-
 
 }
