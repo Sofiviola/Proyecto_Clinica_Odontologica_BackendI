@@ -1,6 +1,7 @@
 package com.clinica.odontologica.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -21,10 +22,13 @@ public class Odontologo {
     private String apellido;
     private Integer matricula;
 
+
+
     //Vinculacion tabla turnos
     @OneToMany(mappedBy = "odontologo")
     @JsonIgnore
     private Set<Turno> turnos;
+
 
 
 }

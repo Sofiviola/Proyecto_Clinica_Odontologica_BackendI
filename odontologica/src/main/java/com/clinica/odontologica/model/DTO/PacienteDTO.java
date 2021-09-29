@@ -1,5 +1,6 @@
 package com.clinica.odontologica.model.DTO;
 
+import com.clinica.odontologica.model.Domicilio;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -15,4 +16,5 @@ public class PacienteDTO {
     private String apellido;
     private String dni;
     private Date fechaIngreso;
+    private Domicilio domicilio;
 }

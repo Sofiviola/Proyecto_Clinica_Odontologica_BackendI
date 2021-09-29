@@ -1,0 +1,2 @@
+[2021-09-2821:54:36] [ ERROR] [GlobalExceptionHandler:19] Unable to find com.clinica.odontologica.model.Domicilio with id 100; nested exception is javax.persistence.EntityNotFoundException: Unable to find com.clinica.odontologica.model.Domicilio with id 100
+[2021-09-2821:55:42] [ ERROR] [GlobalExceptionHandler:19] Unable to find com.clinica.odontologica.model.Domicilio with id 100; nested exception is javax.persistence.EntityNotFoundException: Unable to find com.clinica.odontologica.model.Domicilio with id 100

@@ -1,5 +1,6 @@
 package com.clinica.odontologica.model;
 
+import com.clinica.odontologica.model.DTO.DomicilioDTO;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
@@ -31,4 +32,5 @@ public class Paciente {
     @OneToOne
     @JoinColumn(name = "id_domicilio" , referencedColumnName = "id")
     private Domicilio domicilio;
+
 }
