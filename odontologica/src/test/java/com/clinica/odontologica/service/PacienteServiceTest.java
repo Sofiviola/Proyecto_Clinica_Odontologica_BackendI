@@ -23,7 +23,7 @@ public class PacienteServiceTest {
         PacienteDTO pacienteDTO = new PacienteDTO();
         pacienteDTO.setNombre("Nora");
         pacienteDTO.setApellido("Roberts");
-        pacienteDTO.setDni("1234");
+        pacienteDTO.setDni("1950");
         pacienteDTO.setFechaIngreso(new Date());
 
         iPacienteService.agregarPaciente(pacienteDTO);
@@ -38,7 +38,7 @@ public class PacienteServiceTest {
         PacienteDTO pacienteDTO = new PacienteDTO();
         pacienteDTO.setNombre("Agatha");
         pacienteDTO.setApellido("Christie");
-        pacienteDTO.setDni("1234");
+        pacienteDTO.setDni("1890");
         pacienteDTO.setFechaIngreso(new Date());
 
         iPacienteService.agregarPaciente(pacienteDTO);

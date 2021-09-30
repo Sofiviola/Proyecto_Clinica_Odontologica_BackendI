@@ -1,2 +1,4 @@
 [2021-09-2821:54:36] [ ERROR] [GlobalExceptionHandler:19] Unable to find com.clinica.odontologica.model.Domicilio with id 100; nested exception is javax.persistence.EntityNotFoundException: Unable to find com.clinica.odontologica.model.Domicilio with id 100
 [2021-09-2821:55:42] [ ERROR] [GlobalExceptionHandler:19] Unable to find com.clinica.odontologica.model.Domicilio with id 100; nested exception is javax.persistence.EntityNotFoundException: Unable to find com.clinica.odontologica.model.Domicilio with id 100
+[2021-09-2917:03:49] [ ERROR] [GlobalExceptionHandler:19] could not execute statement; SQL [n/a]; constraint ["FKQTJ6T7MULC2JMFKV92X4CTKWH: PUBLIC.TURNOS FOREIGN KEY(ODONTOLOGO_ID) REFERENCES PUBLIC.ODONTOLOGOS(ID) (1)"; SQL statement:
+delete from odontologos where id=? [23503-200]]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
